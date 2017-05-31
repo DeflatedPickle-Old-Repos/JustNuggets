@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "justnuggets",
+    "name": "JustNuggets",
+    "description": "Adds a nugget for every ingot found in the OreDictionary.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "updateUrl": "",
+    "authorList": ["DeflatedPickle"],
+    "credits": "DeflatedPickle, Bluexin, Tencao, Loremaster",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
