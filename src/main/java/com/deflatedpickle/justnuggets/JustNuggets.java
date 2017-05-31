@@ -41,6 +41,7 @@ public class JustNuggets {
                         // Register the nugget
                         GameRegistry.register(nugget);
                         // Add crafting recipe
+                        ModCrafting.add_recipe(nugget, metal);
                         // Register to ore dictionary
                         OreDictionary.registerOre("nugget" + metal, nugget);
                     }
