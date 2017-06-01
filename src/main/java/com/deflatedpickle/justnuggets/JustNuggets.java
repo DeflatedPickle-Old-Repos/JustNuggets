@@ -47,21 +47,14 @@ public class JustNuggets {
             // Search for all blocks in the OreDictionary
             if (block.startsWith("block") && !OreDictionary.getOres(block).isEmpty()){
                 String blockName = block.substring("block".length());
-                for (String metal : OreDictionary.getOreNames())
-                    // Check if that block has an ingot
-                    if (metal.equals("ingot" + blockName) && !OreDictionary.getOres(metal).isEmpty()){
-                        // Make a new nugget
-                        nugget = new ItemNugget(metal);
-                        // Register the nugget
-                        GameRegistry.register(nugget);
-                        // Register rendering of the nugget
-                        ModelLoader.setCustomModelResourceLocation(nugget, 0, new ModelResourceLocation("justnuggets" + ":" + "nugget", "inventory"));
-                        // Adds the nugget to the list
-                        nugget_list.add(nugget);
-                        // Add crafting recipe
-                        ModCrafting.add_recipe(nugget, metal);
-                        // Register to ore dictionary
-                        OreDictionary.registerOre("nugget" + metal, nugget);
+                for (String base : OreDictionary.getOreNames())
+                    // Check if that block has an ingot or gem
+                    if (!OreDictionary.getOres(base).isEmpty()) {
+                        if (base.equals("ingot" + blockName)) {
+                            registerNugget(base, "ingot");
+                        } else if (base.equals("gem" + blockName)) {
+                            registerNugget(base, "gem");
+                        }
                     }
             }
     }
@@ -81,16 +74,31 @@ public class JustNuggets {
     public void PostInit(FMLPostInitializationEvent event){
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void registerItemColor(Item nugget, IItemColor color){
-        ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
-        itemColors.registerItemColorHandler(color::getColorFromItemstack, nugget);
-    }
-
     public static CreativeTabs tabJustNuggets = new CreativeTabs("tab_justnuggets"){
         @Override
         public ItemStack getTabIconItem(){
             return new ItemStack(Items.GOLD_NUGGET);
         }
     };
+
+    @SideOnly(Side.CLIENT)
+    public static void registerItemColor(Item nugget, IItemColor color){
+        ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+        itemColors.registerItemColorHandler(color::getColorFromItemstack, nugget);
+    }
+
+    private void registerNugget(String base, String type){
+        // Make a new nugget
+        nugget = new ItemNugget(base, type);
+        // Register the nugget
+        GameRegistry.register(nugget);
+        // Register rendering of the nugget
+        ModelLoader.setCustomModelResourceLocation(nugget, 0, new ModelResourceLocation("justnuggets" + ":" + "nugget", "inventory"));
+        // Adds the nugget to the list
+        nugget_list.add(nugget);
+        // Add crafting recipe
+        ModCrafting.add_recipe(nugget, base);
+        // Register to ore dictionary
+        OreDictionary.registerOre("nugget" + base, nugget);
+    }
 }

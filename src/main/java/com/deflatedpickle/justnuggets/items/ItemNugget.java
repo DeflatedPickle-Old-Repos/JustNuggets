@@ -9,9 +9,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemNugget extends Item implements IItemColor{
-    public ItemNugget(String base){
-        setUnlocalizedName("nugget" + base.substring("ingot".length()));
-        setRegistryName(Reference.MOD_ID + ":" + base.substring("ingot".length()) + "_nugget");
+    public ItemNugget(String base, String type){
+        setUnlocalizedName("nugget" + base.substring(type.length()));
+        setRegistryName(Reference.MOD_ID + ":" + base.substring(type.length()) + "_nugget");
         setCreativeTab(JustNuggets.tabJustNuggets);
     }
 
