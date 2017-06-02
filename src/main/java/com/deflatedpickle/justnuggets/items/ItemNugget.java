@@ -2,14 +2,10 @@ package com.deflatedpickle.justnuggets.items;
 
 import com.deflatedpickle.justnuggets.JustNuggets;
 import com.deflatedpickle.justnuggets.Reference;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemNugget extends Item implements IItemColor{
-    // TODO: Implement IItemColor somewhere else, I've been told it's bad to do it here.
+public class ItemNugget extends Item {
     // TODO: Use the texture for the golden nugget and greyscale it automatically.
     public String base;
     public String type;
@@ -27,10 +23,5 @@ public class ItemNugget extends Item implements IItemColor{
     @Override
     public String getItemStackDisplayName(ItemStack stack){
         return String.format("%s Nugget", this.base.substring(type.length()));
-    }
-
-    @SideOnly(Side.CLIENT)
-    public int getColorFromItemstack(ItemStack stack, int tint){
-        return this.colour;
     }
 }
