@@ -106,7 +106,7 @@ public class JustNuggets {
         // Add crafting recipe
         ModCrafting.add_recipe(nugget, base);
         // Register to ore dictionary
-        OreDictionary.registerOre("nugget" + base, nugget);
+        OreDictionary.registerOre("nugget" + base.substring(type.length()), nugget);
     }
 
     private void registerNuggetColour(ItemStack base, ItemNugget nug){

@@ -15,7 +15,7 @@ public class ItemNugget extends Item {
         this.base = base;
         this.type = type;
 
-        setUnlocalizedName("nugget" + base.substring(type.length()));
+        setUnlocalizedName(base.substring(type.length()).toLowerCase() + "Nugget");
         setRegistryName(Reference.MOD_ID + ":" + base.substring(type.length()) + "_nugget");
         setCreativeTab(JustNuggets.tabJustNuggets);
     }
