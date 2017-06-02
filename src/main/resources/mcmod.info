@@ -2,14 +2,14 @@
   {
     "modid": "justnuggets",
     "name": "JustNuggets",
-    "description": "Adds a nugget for every ingot found in the OreDictionary.",
+    "description": "Adds a nugget for every ingot and gem found in the Ore Dictionary.",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "updateUrl": "",
     "authorList": ["DeflatedPickle"],
     "credits": "DeflatedPickle, Bluexin, Tencao, Loremaster, TehNut, pau101",
     "url": "https://github.com/DeflatedPickle/JustNuggets",
-    "logoFile": "",
+    "logoFile": "logo.png",
     "screenshots": [],
     "dependencies": []
   }

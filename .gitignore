@@ -22,6 +22,7 @@
 *.launch
 *.project
 *.psd
+*.pdn
 *.zip
 
 #Specific files
