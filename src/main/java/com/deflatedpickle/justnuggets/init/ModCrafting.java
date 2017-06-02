@@ -11,7 +11,7 @@ import java.util.*;
 
 
 public class ModCrafting {
-    private static Set<Pair<Item, String>> recipes = new HashSet<>();
+    private static Set<Pair<Item, String>> recipes = new HashSet();
 
     public static void register(){
         for (Pair<Item, String> pair : recipes){

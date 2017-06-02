@@ -43,11 +43,12 @@ public class ClientProxy implements CommonProxy{
     }
 
     public static void registerItemColour(ItemNugget nugget){
+        final int colour = nugget.colour;
         ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
         itemColors.registerItemColorHandler(new IItemColor() {
             @Override
             public int getColorFromItemstack(ItemStack stack, int tintIndex) {
-                return nugget.colour;
+                return colour;
             }
         }, nugget);
     }
