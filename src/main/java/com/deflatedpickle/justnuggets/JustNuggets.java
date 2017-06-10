@@ -28,41 +28,49 @@ public class JustNuggets {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
 
+    // Creates the nugget variable.
     public static ItemNugget nugget;
 
+    // Creates a list for the nuggets.
     public static List<ItemNugget> nugget_list = new ArrayList();
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event){
-        for (String block : OreDictionary.getOreNames())
-            // Search for all blocks in the OreDictionary
-            if (block.startsWith("block") && !OreDictionary.getOres(block).isEmpty()){
-                String blockName = block.substring("block".length());
-                for (String base : OreDictionary.getOreNames())
-                    // Check if that block has an ingot or gem
-                    if (!OreDictionary.getOres(base).isEmpty()) {
-                        if (base.equals("ingot" + blockName)) {
-                            registerNugget(base, "ingot");
-                        } else if (base.equals("gem" + blockName)) {
-                            registerNugget(base, "gem");
-                        }
-                    }
+    public void preInit(FMLPreInitializationEvent event) {
+        // Iterate through all ores in the ore dictionary.
+        for (String ore : OreDictionary.getOreNames()) {
+            if (!OreDictionary.getOres(ore).isEmpty()) {
+                // Check if the ore is an ingot.
+                if (ore.startsWith("ingot")) {
+                    // Registers the nugget from an ingot.
+                    registerNugget(ore, "ingot");
+                    // Checks if the ore is gem.
+                } else if (ore.startsWith("gem")) {
+                    // Registers the nugget from a gem.
+                    registerNugget(ore, "gem");
+                }/* else if (ore.startsWith("food")) {
+                    // Registers the nugget from a food.
+                    registerNugget(ore, "food");
+                }*/
             }
+        }
     }
 
+    // This comment only exists to trigger JamiesWhiteShirt.
+
     @EventHandler
-    public void Init(FMLInitializationEvent event){
+    public void Init(FMLInitializationEvent event) {
         proxy.init();
+        // Registers the crafting for the nuggets.
         ModCrafting.register();
     }
 
     @EventHandler
-    public void PostInit(FMLPostInitializationEvent event){
+    public void PostInit(FMLPostInitializationEvent event) {
     }
 
-    public static CreativeTabs tabJustNuggets = new CreativeTabs("tab_justnuggets"){
+    public static CreativeTabs tabJustNuggets = new CreativeTabs("tab_justnuggets") {
         @Override
-        public ItemStack getTabIconItem(){
+        public ItemStack getTabIconItem() {
             return new ItemStack(Items.GOLD_NUGGET);
         }
     };
