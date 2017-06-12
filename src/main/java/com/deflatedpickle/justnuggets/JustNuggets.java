@@ -76,17 +76,17 @@ public class JustNuggets {
     };
 
     public void registerNugget(String base, String type){
-        // Make a new nugget
+        // Make a new nugget.
         nugget = new ItemNugget(base, type);
-        // Register the nugget
+        // Register the nugget.
         GameRegistry.register(nugget);
-        // Register rendering of the nugget
+        // Register rendering of the nugget.
         proxy.registerNuggetModel(nugget);
-        // Adds the nugget to the list
+        // Adds the nugget to the list.
         nugget_list.add(nugget);
-        // Add crafting recipe
+        // Add crafting recipe.
         ModCrafting.add_recipe(nugget, base);
-        // Register to ore dictionary
+        // Register to ore dictionary.
         OreDictionary.registerOre("nugget" + base.substring(type.length()), nugget);
     }
 }

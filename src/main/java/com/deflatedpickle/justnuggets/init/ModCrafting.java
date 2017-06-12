@@ -15,9 +15,9 @@ public class ModCrafting {
 
     public static void register(){
         for (Pair<Item, String> pair : recipes){
-            // Adds recipe for turning the ingot into nuggets
+            // Adds recipe for turning the ingot into nuggets.
             GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(pair.getLeft(), 9), pair.getRight()));
-            // Adds recipe for turning 9 of the nugget into an ingot
+            // Adds recipe for turning 9 of the nugget into an ingot.
             GameRegistry.addShapelessRecipe(OreDictionary.getOres(pair.getRight()).get(0).copy(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft(), pair.getLeft());
         }
     }
